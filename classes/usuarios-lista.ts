@@ -6,23 +6,22 @@ export class UsuariosLista {
 
   agregar(usuario: Usuario) {
     this.lista.push(usuario);
-    console.log(this.lista);
     return usuario;
   }
 
   actualizarNombre(id: string, nombre: string) {
-    console.log('Actualizando usuario...');
     for (let usuario of this.lista) {
       if (usuario.id === id) {
         usuario.nombre = nombre;
         break;
       }
     }
+    console.log(`Usuario ${id} actualizado...`);
     console.log(this.lista);
   }
 
   getLista() {
-    return this.lista;
+    return this.lista.filter((usuario) => usuario.nombre !== '');
   }
 
   getUsuario(id: string) {
@@ -42,7 +41,6 @@ export class UsuariosLista {
     this.lista = this.lista.filter((usuario) => {
       return usuario.id !== id;
     });
-    console.log(this.lista);
     return tempUsuario;
   }
 }
